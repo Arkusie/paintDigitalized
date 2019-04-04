@@ -1,0 +1,22 @@
+@import "./scss/config.scss";
+
+body {
+  background-color: $main-White;
+  color: $main-Black;
+  font-family: "Rubik", sans-serif;
+
+  .navbar {
+    position: sticky;
+    top: 0;
+
+    background-color: $primary-Color;
+    .navbar-center {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 50px;
+    }
+  }
+}
+
+// @import "~bootstrap/scss/bootstrap";
