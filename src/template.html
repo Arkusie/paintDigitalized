@@ -23,7 +23,7 @@
       <div class="navbar-center">
         <!-- 1 -->
         <div class="cart-btn">
-          <span class="nav-icon"><i class="fas fa-bars"></i></span>
+          <span class="nav-icon"><i class="fas fa-bars fa-lg"></i></span>
         </div>
         <!-- 2 -->
         <div class="logo">
@@ -31,11 +31,11 @@
         </div>
         <!-- 3 -->
         <div class="cart-btn">
-          <span class="nav-icon"><i class="fas fa-cart-plus"></i></span>
+          <span class="nav-icon"><i class="fas fa-cart-plus fa-lg"></i></span>
         </div>
       </div>
     </nav>
-    <!--  -->
+    <!--intro header-->
     <header class="header-intro">
       <div class="banner">
         <h1 class="banner-title">All your paitings</h1>
@@ -43,7 +43,52 @@
         <button id="banner-btn">explore</button>
       </div>
     </header>
-
+    <!-- paitings -->
+    <section class="paintings">
+      <div class="section-title">
+        <h2>paitings available</h2>
+      </div>
+      <div class="paintings-div">
+        <!-- single paiting -->
+        <article class="painting">
+          <div class="img-container">
+            <img src="assets/images/p1.jpg" alt="paiting one" class="paiting-img" />
+            <button class="add-btn" data-id="1">add</button>
+          </div>
+          <h3>le abstract paiting</h3>
+          <h4>123$</h4>
+        </article>
+        <!-- single paiting -->
+      </div>
+    </section>
+    <!-- the cart -->
+    <div class="cart-overlay">
+      <div class="cart">
+        <span class="close-cart">X</span>
+        <h2>the cart</h2>
+      </div>
+      <div class="cart-content">
+        <!-- the actual cart paiting -->
+        <div class="cart-item">
+          <img src="assets/images/p1.jpg" alt="a product" class="cart-img" />
+          <div>
+            <h4>le abstract paiting</h4>
+            <h5>123$</h5>
+            <span class="remove-paiting">remove</span>
+          </div>
+          <div>
+            <i class="fas fa-chevron-up"></i>
+            <p class="painting-quantity">1</p>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <!-- the actual cart paiting -->
+      </div>
+      <div class="cart-footer">
+        <h3>total price: 232$</h3>
+        <button class="clear-cart cart-btn"></button>
+      </div>
+    </div>
     <!--  -->
   </body>
 </html>
