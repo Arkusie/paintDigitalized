@@ -6,17 +6,92 @@ body {
   font-family: "Rubik", sans-serif;
 
   .navbar {
+    margin: 0 auto;
     position: sticky;
     top: 0;
-
+    z-index: 10;
     background-color: $primary-Color;
     .navbar-center {
       display: flex;
       justify-content: space-evenly;
       align-items: center;
-      height: 50px;
+      height: 60px;
+      .logo h1 {
+        font-family: "Finger Paint", cursive;
+        font-size: 2.3rem;
+        color: $main-White;
+        .logo-digital {
+          font-size: 0.7rem;
+          padding-left: 10px;
+          color: $main-Digital-Color;
+          font-family: "Orbitron", sans-serif;
+          letter-spacing: 5px;
+        }
+      }
+      .nav-icon {
+        color: $menu-Color;
+      }
+      .cart-btn {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .header-intro {
+    min-height: calc(100vh - 60px);
+    background: url("./assets/images/background.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .banner {
+      padding: 2rem;
+      text-align: center;
+      text-transform: uppercase;
+      background: rgba($main-Black, 0.8);
+      .banner-title {
+        font-size: 2rem;
+        color: $main-White;
+        font-family: "Finger Paint", cursive;
+      }
+      .banner-title-digital {
+        color: $main-Digital-Color;
+        font-family: "Orbitron", sans-serif;
+        text-transform: none;
+        letter-spacing: $main-Spacing;
+      }
+      #banner-btn {
+        position: relative;
+        padding: 0.5rem 1.5rem;
+        margin-top: 2rem;
+        width: 100%;
+        cursor: pointer;
+        font-size: 1rem;
+        border: none;
+        background-color: $primary-Color;
+        color: $main-White;
+        letter-spacing: $main-Spacing;
+        &#banner-btn::after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 0.5rem 1.5rem;
+          opacity: 0.1;
+          content: "explore";
+          background-color: $menu-Color;
+          color: $main-Black;
+        }
+        &#banner-btn:hover::after {
+          transition: $main-Transition;
+          opacity: 1;
+        }
+      }
     }
   }
 }
 
-// @import "~bootstrap/scss/bootstrap";
+// &#banner-btn:hover {
+//   transition: $main-Transition;
+//   background-color: $menu-Color;
+// }
