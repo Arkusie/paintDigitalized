@@ -1,4 +1,5 @@
-import { run } from "./scripts/script1";
+import "./scripts/app";
 import "./styles.scss";
 
-run();
+// const { cartOverlay } = Selectors;
+// console.log(cartOverlay);

@@ -32,7 +32,16 @@ body {
         color: $menu-Color;
       }
       .cart-btn {
+        position: relative;
         cursor: pointer;
+        .cart-counter {
+          position: absolute;
+          bottom: -0.8rem;
+          right: -0.8rem;
+          color: $menu-Color;
+          font-family: "Finger Paint", cursive;
+          font-size: 1.2rem;
+        }
       }
     }
   }
@@ -101,7 +110,11 @@ body {
     padding: 2rem 0.5rem;
     .section-title h2 {
       text-align: center;
-      font-size: 2rem;
+      font-size: 1.8rem;
+      padding: 1rem;
+      color: $primary-Color;
+      font-weight: 400;
+      letter-spacing: $main-Spacing;
     }
 
     .paintings-div {
@@ -116,7 +129,12 @@ body {
       .painting {
         h3 {
           font-family: "Finger Paint", cursive;
+          font-size: 0.9rem;
+        }
+        h4 {
           font-size: 0.8rem;
+          font-weight: 400;
+          padding: 0.2rem 0;
         }
         .img-container {
           position: relative;
@@ -158,14 +176,14 @@ body {
   }
   // the cart
   .cart-overlay {
-    // visibility: hidden;
+    visibility: hidden;
     position: fixed;
     top: 0;
     right: 0;
     width: 100%;
     height: 100%;
-    background: white;
-    opacity: 0.9;
+    background-color: rgba($main-White, 0.7);
+    opacity: 1;
     z-index: 10;
     padding: 1rem;
     .cart {
@@ -176,6 +194,7 @@ body {
       height: 100%;
       padding: 0.5rem 1rem;
       overflow: scroll;
+      background: rgba($menu-Color, 0.8);
       .close-cart {
         font-family: "Finger Paint", cursive;
         font-size: 2.2rem;
@@ -190,7 +209,7 @@ body {
       .cart-footer {
         text-align: center;
         margin-top: 1rem;
-        .cart-btn {
+        .footer-cart-btn {
           position: relative;
           padding: 0.5rem 1.5rem;
           margin-top: 2rem;
@@ -202,7 +221,7 @@ body {
           color: $main-White;
           letter-spacing: $main-Spacing;
           border-radius: $main-BorderRadius;
-          &.cart-btn::after {
+          &.footer-cart-btn::after {
             position: absolute;
             top: 0;
             left: 0;
@@ -214,7 +233,7 @@ body {
             background-color: $main-Grey;
             border-radius: $main-BorderRadius;
           }
-          &.cart-btn:hover::after {
+          &.footer-cart-btn:hover::after {
             transition: $main-Transition;
             opacity: 1;
           }
@@ -260,6 +279,7 @@ body {
         background-color: $main-Black;
         text-align: center;
         border-radius: $main-BorderRadius;
+        cursor: pointer;
       }
     }
   }
