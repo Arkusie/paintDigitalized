@@ -43,7 +43,7 @@ class UI {
       templateResult += `
       <article class="painting">
       <div class="img-container">
-        <img src=${painting.image} alt="paiting ${painting.id}" class="paiting-img" />
+        <img src=${painting.image} alt="paiting nr ${painting.id}" class="paiting-img" />
         <button class="add-btn" data-id=${painting.id}>add</button>
       </div>
       <h3>${painting.title}</h3>
@@ -52,17 +52,35 @@ class UI {
     });
     paintingsDOM.innerHTML = templateResult;
   }
+  getAddButtons() {
+    const CartAddButtons = [...document.querySelectorAll(".add-btn")];
+    console.log(CartAddButtons);
+  }
 }
 //local storage
-class Storage {}
+class Storage {
+  static savePaintings(paintings) {
+    localStorage.setItem("paintings", JSON.stringify(paintings));
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const paintings = new Paintings();
   //get  the paitings
-  paintings.getPaintings().then(paintingsData => ui.displayPaitings(paintingsData));
+  paintings
+    .getPaintings()
+    .then(paintingsData => {
+      ui.displayPaitings(paintingsData);
+      // saving on local storage using static method of a class
+      Storage.savePaintings(paintingsData);
+    })
+    .then(() => {
+      ui.getAddButtons();
+    });
 });
 
+// 201
 // console.log(paintingsDOM);
 // const kek = "exported?";
 // export { cartOverlay };

@@ -11,7 +11,7 @@
     {
       "sys": { "id": "2" },
       "fields": {
-        "title": "el paint de paint",
+        "title": "forestry mist",
         "price": 122.0,
         "image": { "fields": { "file": { "url": "src/assets/images/p2.jpg" } } }
       }
@@ -27,7 +27,7 @@
     {
       "sys": { "id": "4" },
       "fields": {
-        "title": "mish mash",
+        "title": "water cast",
         "price": 1222.99,
         "image": { "fields": { "file": { "url": "src/assets/images/p4.jpg" } } }
       }
@@ -35,7 +35,7 @@
     {
       "sys": { "id": "5" },
       "fields": {
-        "title": "qwerty",
+        "title": "quarrel",
         "price": 188.99,
         "image": { "fields": { "file": { "url": "src/assets/images/p5.jpg" } } }
       }
