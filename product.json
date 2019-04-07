@@ -3,65 +3,65 @@
     {
       "sys": { "id": "1" },
       "fields": {
-        "title": "abstact",
-        "price": 10.99,
-        "image": { "fields": { "file": { "url": "./images/product-1.jpeg" } } }
+        "title": "abstact invasion",
+        "price": 175.99,
+        "image": { "fields": { "file": { "url": "src/assets/images/p1.jpg" } } }
       }
     },
     {
       "sys": { "id": "2" },
       "fields": {
-        "title": "abstact",
-        "price": 12.99,
-        "image": { "fields": { "file": { "url": "./images/product-2.jpeg" } } }
+        "title": "el paint de paint",
+        "price": 122.0,
+        "image": { "fields": { "file": { "url": "src/assets/images/p2.jpg" } } }
       }
     },
     {
       "sys": { "id": "3" },
       "fields": {
-        "title": "abstact",
-        "price": 12.99,
-        "image": { "fields": { "file": { "url": "./images/product-3.jpeg" } } }
+        "title": "blib blob blub",
+        "price": 122.0,
+        "image": { "fields": { "file": { "url": "src/assets/images/p3.jpg" } } }
       }
     },
     {
       "sys": { "id": "4" },
       "fields": {
-        "title": "abstact",
-        "price": 22.99,
-        "image": { "fields": { "file": { "url": "./images/product-4.jpeg" } } }
+        "title": "mish mash",
+        "price": 1222.99,
+        "image": { "fields": { "file": { "url": "src/assets/images/p4.jpg" } } }
       }
     },
     {
       "sys": { "id": "5" },
       "fields": {
-        "title": "abstact",
-        "price": 88.99,
-        "image": { "fields": { "file": { "url": "./images/product-5.jpeg" } } }
+        "title": "qwerty",
+        "price": 188.99,
+        "image": { "fields": { "file": { "url": "src/assets/images/p5.jpg" } } }
       }
     },
     {
       "sys": { "id": "6" },
       "fields": {
-        "title": "abstact",
-        "price": 32.99,
-        "image": { "fields": { "file": { "url": "./images/product-6.jpeg" } } }
+        "title": "brush rush",
+        "price": 22.11,
+        "image": { "fields": { "file": { "url": "src/assets/images/p6.jpg" } } }
       }
     },
     {
       "sys": { "id": "7" },
       "fields": {
-        "title": "abstact",
-        "price": 45.99,
-        "image": { "fields": { "file": { "url": "./images/product-7.jpeg" } } }
+        "title": "canvas 1823",
+        "price": 445.11,
+        "image": { "fields": { "file": { "url": "src/assets/images/p7.jpg" } } }
       }
     },
     {
       "sys": { "id": "8" },
       "fields": {
-        "title": "abstact",
-        "price": 33.99,
-        "image": { "fields": { "file": { "url": "./images/product-8.jpeg" } } }
+        "title": "imagination overwhelmed",
+        "price": 33.56,
+        "image": { "fields": { "file": { "url": "src/assets/images/p8.jpg" } } }
       }
     }
   ]

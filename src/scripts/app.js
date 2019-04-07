@@ -19,14 +19,40 @@ class Paintings {
     try {
       let result = fetch("product.json").then(result => result.json());
       let data = await result;
-      return data;
+      // maping throught every paiting to get some props
+      let products = data.items;
+      products = products.map(item => {
+        const { id } = item.sys;
+        const { title, price } = item.fields;
+        const image = item.fields.image.fields.file.url;
+        return { id, title, price, image };
+      });
+      return products;
     } catch (error) {
       console.log("woops ;(");
     }
   }
 }
 // displaying the data
-class UI {}
+class UI {
+  displayPaitings(paintingsData) {
+    console.log(paintingsData);
+
+    let templateResult = "";
+    paintingsData.forEach(painting => {
+      templateResult += `
+      <article class="painting">
+      <div class="img-container">
+        <img src=${painting.image} alt="paiting ${painting.id}" class="paiting-img" />
+        <button class="add-btn" data-id=${painting.id}>add</button>
+      </div>
+      <h3>${painting.title}</h3>
+      <h4>${painting.price}$</h4>
+    </article>`;
+    });
+    paintingsDOM.innerHTML = templateResult;
+  }
+}
 //local storage
 class Storage {}
 
@@ -34,9 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const paintings = new Paintings();
   //get  the paitings
-  paintings.getPaintings().then(data => console.log(data));
-
-  //   console.log("start");
+  paintings.getPaintings().then(paintingsData => ui.displayPaitings(paintingsData));
 });
 
 // console.log(paintingsDOM);

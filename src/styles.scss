@@ -127,6 +127,9 @@ body {
       grid-row-gap: 1rem;
 
       .painting {
+        align-self: center;
+        border: 1px solid $menu-Color;
+        padding: $main-Spacing;
         h3 {
           font-family: "Finger Paint", cursive;
           font-size: 0.9rem;
