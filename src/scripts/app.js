@@ -77,13 +77,65 @@ class UI {
         let cartPainting = { ...Storage.getSinglePainting(id), amount: 1 };
         //add to cart,
         cart = [...cart, cartPainting];
-        console.log(cart);
+
         // add cart to storage
         Storage.saveCart(cart);
-        //set cart values, displat paiting in cart
+        //set cart values
+        this.setCartValue(cart);
+        //displat paiting in cart
+        this.addCartPainting(cartPainting);
         // show cart etc
+        this.showCart();
       });
     });
+  }
+  setCartValue(cart) {
+    let tempTotalprice = 0;
+    let paintingsAmount = 0;
+    cart.map(painting => {
+      tempTotalprice += painting.price * painting.amount;
+      paintingsAmount += painting.amount;
+      console.log(tempTotalprice);
+    });
+
+    cartTotal.innerText = parseFloat(tempTotalprice.toFixed(2));
+    cartCounter.innerHTML = paintingsAmount;
+  }
+  addCartPainting(painting) {
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+    div.innerHTML = `
+    <img src=${painting.image} alt="a product" class="cart-img" />
+    <div>
+      <h4>${painting.title}</h4>
+      <h5>${painting.price} $</h5>
+      <span class="remove-paiting" data-id=${painting.id}>remove</span>
+    </div>
+    <div>
+      <i class="fas fa-chevron-up" data-id=${painting.id}></i>
+      <p class="painting-quantity">${painting.amount}</p>
+      <i class="fas fa-chevron-down" data-id=${painting.id}></i>
+    </div>
+    `;
+    cartContent.appendChild(div);
+    // console.log(cartContent);
+  }
+  showCart() {
+    cartOverlay.classList.add("visibilityOn");
+    console.log("clas added ?");
+  }
+  hideCart() {
+    cartOverlay.classList.remove("visibilityOn");
+  }
+  setupApp() {
+    cart = Storage.getCart();
+    this.setCartValue(cart);
+    this.populateCart(cart);
+    cartBtn.addEventListener("click", this.showCart);
+    closeCartBtn.addEventListener("click", this.hideCart);
+  }
+  populateCart(cart) {
+    cart.forEach(painting => this.addCartPainting(painting));
   }
 }
 //local storage
@@ -98,11 +150,17 @@ class Storage {
   static saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
+  static getCart() {
+    //if there is something in storage, return it parsed if not, empty array
+    return localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const paintings = new Paintings();
+  //setup app - get items from local storage if there are any, setup listeners
+  ui.setupApp();
   //get  the paitings
   paintings
     .getPaintings()
@@ -116,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// 201
+// 221
 // console.log(paintingsDOM);
 // const kek = "exported?";
 // export { cartOverlay };

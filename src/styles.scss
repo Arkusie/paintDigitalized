@@ -287,6 +287,9 @@ body {
         cursor: pointer;
       }
     }
+    &.visibilityOn {
+      visibility: visible;
+    }
   }
 }
 @import "./scss/rwd.scss";
