@@ -10,8 +10,10 @@ const cartTotal = document.querySelector(".cart-total");
 
 const cartContent = document.querySelector(".cart-content");
 const paintingsDOM = document.querySelector(".paintings-div");
-//
+// the cart
 let cart = [];
+//
+let buttonsDOM = [];
 
 // getting the data using async await
 class Paintings {
@@ -36,7 +38,7 @@ class Paintings {
 // displaying the data
 class UI {
   displayPaitings(paintingsData) {
-    console.log(paintingsData);
+    // console.log(paintingsData);
 
     let templateResult = "";
     paintingsData.forEach(painting => {
@@ -53,14 +55,48 @@ class UI {
     paintingsDOM.innerHTML = templateResult;
   }
   getAddButtons() {
+    // spread operator converts nodelist into array
     const CartAddButtons = [...document.querySelectorAll(".add-btn")];
-    console.log(CartAddButtons);
+    // setup buttons array in order to find proper button later on
+    buttonsDOM = CartAddButtons;
+    // console.log(CartAddButtons);
+    CartAddButtons.forEach(button => {
+      let id = button.dataset.id;
+      let inCart = cart.find(item => item.id === id);
+      if (inCart) {
+        button.innerText = "in cart?";
+        button.disabled = true;
+      }
+      button.addEventListener("click", event => {
+        console.log(event);
+        event.target.innerText = "painting in the cart";
+        event.target.disabled = true;
+        // how to rarget before element to change text? hmm
+        console.log("find out how to target pseudo class");
+        //  get paitings from storage, spread operator to get all the velues&props
+        let cartPainting = { ...Storage.getSinglePainting(id), amount: 1 };
+        //add to cart,
+        cart = [...cart, cartPainting];
+        console.log(cart);
+        // add cart to storage
+        Storage.saveCart(cart);
+        //set cart values, displat paiting in cart
+        // show cart etc
+      });
+    });
   }
 }
 //local storage
 class Storage {
   static savePaintings(paintings) {
     localStorage.setItem("paintings", JSON.stringify(paintings));
+  }
+  static getSinglePainting(id) {
+    let paintings = JSON.parse(localStorage.getItem("paintings"));
+    return paintings.find(painting => painting.id === id);
+  }
+  static saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 }
 
