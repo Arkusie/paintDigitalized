@@ -95,7 +95,7 @@ class UI {
     cart.map(painting => {
       tempTotalprice += painting.price * painting.amount;
       paintingsAmount += painting.amount;
-      console.log(tempTotalprice);
+      // console.log(tempTotalprice);
     });
 
     cartTotal.innerText = parseFloat(tempTotalprice.toFixed(2)) + " $";
@@ -109,7 +109,7 @@ class UI {
     <div>
       <h4>${painting.title}</h4>
       <h5>${painting.price} $</h5>
-      <span class="remove-paiting" data-id=${painting.id}>remove</span>
+      <span class="remove-painting" data-id=${painting.id}>remove</span>
     </div>
     <div>
       <i class="fas fa-chevron-up" data-id=${painting.id}></i>
@@ -138,9 +138,41 @@ class UI {
   }
   cartFunctions() {
     clearCartBtn.addEventListener("click", () => this.clearCart());
+    cartContent.addEventListener("click", event => {
+      // console.log(event.target);
+      if (event.target.classList.contains("remove-painting")) {
+        let removePainting = event.target;
+        console.log(removePainting);
+        let id = removePainting.dataset.id;
+        this.removePaintings(id);
+        cartContent.removeChild(removePainting.parentElement.parentElement);
+      } else if (event.target.classList.contains("fa-chevron-up")) {
+        let increment = event.target;
+        let id = increment.dataset.id;
+        let tempPainting = cart.find(painting => painting.id === id);
+        tempPainting.amount += 1;
+        Storage.saveCart(cart);
+        this.setCartValue(cart);
+        increment.nextElementSibling.innerText = tempPainting.amount;
+      } else if (event.target.classList.contains("fa-chevron-down")) {
+        let decrement = event.target;
+        let id = decrement.dataset.id;
+        let tempPainting = cart.find(painting => painting.id === id);
+        tempPainting.amount -= 1;
+        if (tempPainting.amount > 0) {
+          Storage.saveCart(cart);
+          this.setCartValue(cart);
+          decrement.previousElementSibling.innerText = tempPainting.amount;
+        } else {
+          cartContent.removeChild(decrement.parentElement.parentElement);
+          this.removePaintings(id);
+        }
+      }
+    });
   }
+
   clearCart() {
-    console.log(this);
+    // console.log(this);
     let cartPaintings = cart.map(painting => painting.id);
     cartPaintings.forEach(id => this.removePaintings(id));
     console.log(cartContent.children);

@@ -11,6 +11,7 @@ body {
     top: 0;
     z-index: 5;
     background-color: $primary-Color;
+    background-image: linear-gradient(360deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
     .navbar-center {
       display: flex;
       justify-content: space-evenly;
@@ -107,6 +108,7 @@ body {
 
   // paitings
   .paintings {
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
     padding: 2rem 0.5rem;
     .section-title h2 {
       text-align: center;
@@ -188,6 +190,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba($main-White, 0.7);
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.55));
     opacity: 1;
     z-index: 10;
     padding: 1rem;
@@ -199,7 +202,7 @@ body {
       height: 100%;
       padding: 0.5rem 1rem;
       overflow: scroll;
-      background: rgba($menu-Color, 0.8);
+      background-color: rgba($menu-Color, 0.8);
       .close-cart {
         font-family: "Finger Paint", cursive;
         font-size: 2.2rem;
@@ -263,12 +266,16 @@ body {
 
         h4,
         h5,
-        .remove-paiting {
+        .remove-painting {
           font-size: 0.8rem;
           font-family: "Rubik", sans-serif;
           font-weight: 400;
           color: $main-Grey;
           padding-bottom: 0.7rem;
+        }
+        .remove-painting {
+          font-size: 0.7rem;
+          cursor: pointer;
         }
         h4 {
           font-family: "Finger Paint", cursive;
