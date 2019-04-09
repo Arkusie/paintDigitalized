@@ -64,7 +64,7 @@ class UI {
       let id = button.dataset.id;
       let inCart = cart.find(item => item.id === id);
       if (inCart) {
-        button.innerText = "in cart?";
+        button.innerText = "painting in the cart";
         button.disabled = true;
       }
       button.addEventListener("click", event => {
@@ -98,7 +98,7 @@ class UI {
       console.log(tempTotalprice);
     });
 
-    cartTotal.innerText = parseFloat(tempTotalprice.toFixed(2));
+    cartTotal.innerText = parseFloat(tempTotalprice.toFixed(2)) + " $";
     cartCounter.innerHTML = paintingsAmount;
   }
   addCartPainting(painting) {
@@ -122,7 +122,6 @@ class UI {
   }
   showCart() {
     cartOverlay.classList.add("visibilityOn");
-    console.log("clas added ?");
   }
   hideCart() {
     cartOverlay.classList.remove("visibilityOn");
@@ -136,6 +135,32 @@ class UI {
   }
   populateCart(cart) {
     cart.forEach(painting => this.addCartPainting(painting));
+  }
+  cartFunctions() {
+    clearCartBtn.addEventListener("click", () => this.clearCart());
+  }
+  clearCart() {
+    console.log(this);
+    let cartPaintings = cart.map(painting => painting.id);
+    cartPaintings.forEach(id => this.removePaintings(id));
+    console.log(cartContent.children);
+
+    while (cartContent.children.length > 0) {
+      cartContent.removeChild(cartContent.children[0]);
+    }
+    this.hideCart();
+  }
+  removePaintings(id) {
+    // used for both: single remove and remove all
+    cart = cart.filter(painting => painting.id !== id);
+    this.setCartValue(cart);
+    Storage.saveCart(cart);
+    let button = this.getSingleButton(id);
+    button.disabled = false;
+    button.innerHTML = "add";
+  }
+  getSingleButton(id) {
+    return buttonsDOM.find(button => button.dataset.id === id);
   }
 }
 //local storage
@@ -171,10 +196,11 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(() => {
       ui.getAddButtons();
+      ui.cartFunctions();
     });
 });
 
-// 221
+// 252
 // console.log(paintingsDOM);
 // const kek = "exported?";
 // export { cartOverlay };
