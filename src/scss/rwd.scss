@@ -9,3 +9,47 @@
     }
   }
 }
+
+@media screen and (max-width: 799px) {
+  body {
+    .navbar {
+      .navbar-center {
+        height: 45px;
+        .logo h1 {
+          font-size: 1.6rem;
+
+          .logo-digital {
+            font-size: 0.4rem;
+            padding-left: 5px;
+
+            letter-spacing: 3px;
+          }
+        }
+
+        .cart-btn {
+          .cart-counter {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .header-intro {
+      min-height: calc(100vh - 45px);
+      .banner {
+        padding: 1rem;
+        .banner-title {
+          font-size: 1.4rem;
+        }
+        .banner-title-digital {
+          font-size: 0.7rem;
+        }
+        #banner-btn {
+          margin-top: 1rem;
+          width: 80%;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

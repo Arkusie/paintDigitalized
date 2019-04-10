@@ -1,0 +1,11 @@
+export const cartBtn = document.querySelector(".cart-btn");
+export const closeCartBtn = document.querySelector(".close-cart");
+export const clearCartBtn = document.querySelector(".clear-cart");
+export const cartDOM = document.querySelector(".cart");
+export const cartOverlay = document.querySelector(".cart-overlay");
+export const cartCounter = document.querySelector(".cart-counter");
+export const cartTotal = document.querySelector(".cart-total");
+export const menuBtn = document.querySelector(".nav-icon");
+export const menu = document.getElementById("menu");
+export const cartContent = document.querySelector(".cart-content");
+export const paintingsDOM = document.querySelector(".paintings-div");

@@ -1,53 +1,31 @@
-const client = contentful.createClient({
-  space: "wdc5bahtvr5m",
-  accessToken: "f5a271f6509fdc1343489d67f0a7358d7e6800324a0d82db55a7656fa2302123"
-});
-// console.log(client);
-// selecting elements
-const cartBtn = document.querySelector(".cart-btn");
-const closeCartBtn = document.querySelector(".close-cart");
-const clearCartBtn = document.querySelector(".clear-cart");
-const cartDOM = document.querySelector(".cart");
-const cartOverlay = document.querySelector(".cart-overlay");
-const cartCounter = document.querySelector(".cart-counter");
-const cartTotal = document.querySelector(".cart-total");
-
-const cartContent = document.querySelector(".cart-content");
-const paintingsDOM = document.querySelector(".paintings-div");
-
+import {
+  paintingsDOM,
+  cartContent,
+  menu,
+  menuBtn,
+  cartTotal,
+  cartCounter,
+  cartBtn,
+  closeCartBtn,
+  clearCartBtn,
+  cartDOM,
+  cartOverlay
+} from "./selectors";
+import { Storage } from "./storage";
+import { Paintings } from "./Paintings";
+//
 let cart = [];
 let buttonsDOM = [];
-
-// getting the data using async await, later applying contentful
-class Paintings {
-  async getPaintings() {
-    try {
-      let contentful = await client.getEntries({
-        content_type: "paintDigitalizedPaintings"
-      });
-
-      // let result = fetch("product.json").then(result => result.json());
-      // let data = await result;
-      // applying contentful data here instead of json data file
-      // maping throught every paiting to get some props
-      let products = contentful.items;
-      products = products.map(item => {
-        const { id } = item.sys;
-        const { title, price } = item.fields;
-        const image = item.fields.image.fields.file.url;
-        return { id, title, price, image };
-      });
-      return products;
-    } catch (error) {
-      console.log("woops ;(");
-    }
-  }
+// menu
+menuBtn.addEventListener("click", toggleMenu);
+function toggleMenu() {
+  menu.classList.toggle("visibilityOn");
 }
+// getting the data using async await, later applying contentful
 // displaying the data
 class UI {
   displayPaitings(paintingsData) {
     // console.log(paintingsData);
-
     let templateResult = "";
     paintingsData.forEach(painting => {
       templateResult += `
@@ -72,12 +50,12 @@ class UI {
       let id = button.dataset.id;
       let inCart = cart.find(item => item.id === id);
       if (inCart) {
-        button.innerText = "painting in the cart";
+        button.innerText = "in the cart";
         button.disabled = true;
       }
       button.addEventListener("click", event => {
         console.log(event);
-        event.target.innerText = "painting in the cart";
+        event.target.innerText = "in the cart";
         event.target.disabled = true;
         // how to rarget before element to change text? hmm
         console.log("find out how to target pseudo class");
@@ -93,7 +71,7 @@ class UI {
         //displat paiting in cart
         this.addCartPainting(cartPainting);
         // show cart etc
-        this.showCart();
+        // this.showCart();
       });
     });
   }
@@ -204,22 +182,6 @@ class UI {
   }
 }
 //local storage
-class Storage {
-  static savePaintings(paintings) {
-    localStorage.setItem("paintings", JSON.stringify(paintings));
-  }
-  static getSinglePainting(id) {
-    let paintings = JSON.parse(localStorage.getItem("paintings"));
-    return paintings.find(painting => painting.id === id);
-  }
-  static saveCart(cart) {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
-  static getCart() {
-    //if there is something in storage, return it parsed if not, empty array
-    return localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
-  }
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
