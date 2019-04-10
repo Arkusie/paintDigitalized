@@ -1,5 +1,9 @@
+const client = contentful.createClient({
+  space: "wdc5bahtvr5m",
+  accessToken: "f5a271f6509fdc1343489d67f0a7358d7e6800324a0d82db55a7656fa2302123"
+});
+// console.log(client);
 // selecting elements
-
 const cartBtn = document.querySelector(".cart-btn");
 const closeCartBtn = document.querySelector(".close-cart");
 const clearCartBtn = document.querySelector(".clear-cart");
@@ -10,19 +14,23 @@ const cartTotal = document.querySelector(".cart-total");
 
 const cartContent = document.querySelector(".cart-content");
 const paintingsDOM = document.querySelector(".paintings-div");
-// the cart
+
 let cart = [];
-//
 let buttonsDOM = [];
 
-// getting the data using async await
+// getting the data using async await, later applying contentful
 class Paintings {
   async getPaintings() {
     try {
-      let result = fetch("product.json").then(result => result.json());
-      let data = await result;
+      let contentful = await client.getEntries({
+        content_type: "paintDigitalizedPaintings"
+      });
+
+      // let result = fetch("product.json").then(result => result.json());
+      // let data = await result;
+      // applying contentful data here instead of json data file
       // maping throught every paiting to get some props
-      let products = data.items;
+      let products = contentful.items;
       products = products.map(item => {
         const { id } = item.sys;
         const { title, price } = item.fields;
