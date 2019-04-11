@@ -4,7 +4,7 @@ $main-Black: rgb(44, 42, 42);
 $menu-Color: rgb(255, 185, 55);
 $menu-Color-lighter: rgb(255, 193, 77);
 $main-Grey: rgb(94, 94, 94);
-$main-Digital-Color: rgb(138, 241, 255);
+$main-Digital-Color: rgb(41, 255, 226);
 //
 $main-Spacing: 0.2rem;
 $main-Transition: all 0.1s ease-in-out;
@@ -16,6 +16,7 @@ $main-BorderRadius: 5px;
   box-sizing: border-box;
   font-size: 20px;
 }
+
 // animations
 @keyframes displayElement {
   0% {

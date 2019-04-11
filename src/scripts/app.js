@@ -1,15 +1,19 @@
 import {
   paintingsDOM,
   cartContent,
-  menu,
-  menuBtn,
+  aboutDIV,
+  aboutBtn,
+  closeAbout,
   cartTotal,
   cartCounter,
   cartBtn,
   closeCartBtn,
   clearCartBtn,
   cartDOM,
-  cartOverlay
+  cartOverlay,
+  DigitalizeDIV,
+  closeDigitalize,
+  Digitalize
 } from "./selectors";
 import { Storage } from "./storage";
 import { Paintings } from "./Paintings";
@@ -17,9 +21,18 @@ import { Paintings } from "./Paintings";
 let cart = [];
 let buttonsDOM = [];
 // menu
-menuBtn.addEventListener("click", toggleMenu);
-function toggleMenu() {
-  menu.classList.toggle("visibilityOn");
+closeDigitalize.addEventListener("click", toggleDigitalize);
+Digitalize.addEventListener("click", toggleDigitalize);
+function toggleDigitalize() {
+  DigitalizeDIV.classList.toggle("visibilityOn");
+  aboutDIV.classList.remove("visibilityOn");
+}
+
+closeAbout.addEventListener("click", toggleAbout);
+aboutBtn.addEventListener("click", toggleAbout);
+function toggleAbout() {
+  aboutDIV.classList.toggle("visibilityOn");
+  DigitalizeDIV.classList.remove("visibilityOn");
 }
 // getting the data using async await, later applying contentful
 // displaying the data
